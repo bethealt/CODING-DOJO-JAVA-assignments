@@ -1,0 +1,6 @@
+.container {
+    background-color: lightskyblue;
+    border: 2pt solid;
+    display: block;
+    text-align: center;
+}
