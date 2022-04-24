@@ -2,6 +2,7 @@ package com.bethealt.mvc.services;
 import com.bethealt.mvc.models.*;
 import com.bethealt.mvc.repositories.BookRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
 
@@ -9,12 +10,8 @@ import java.util.*;
 
 public class BookService {
 
-    private final BookRepository bookRepository;
-    //adds the book repository as a dependency
-
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
+    @Autowired
+    BookRepository bookRepository;
 
     // returns all the books
     public List<Book> allBooks() {

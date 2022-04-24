@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
+import java.util.*;
 
 @Controller
 
@@ -21,7 +22,11 @@ public class BookController {
     }
 
     @GetMapping("/books")
-    public String books() {
+    public String books(Model model) {
+
+        List<Book> books = bookService.allBooks();
+        model.addAttribute("books", books);
+
         return "index.jsp";
     }
 
