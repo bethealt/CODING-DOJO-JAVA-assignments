@@ -27,7 +27,7 @@ public class ExpenseController {
     }
 
     @GetMapping("/expenses")
-    public String newExpense(@ModelAttribute("expense") Expense expense, Model model) {
+    public String expenses(@ModelAttribute("expense") Expense expense, Model model) {
 
         List<Expense> expenses = expenseService.allExpenses();
         model.addAttribute("expenses", expenses);
@@ -36,7 +36,11 @@ public class ExpenseController {
     }
 
     @PostMapping("/expenses")
-    public String create(@Valid @ModelAttribute("expense") Expense expense,  BindingResult result) {
+    public String create(@Valid @ModelAttribute("expense") Expense expense, BindingResult result, Model model) {
+
+        List<Expense> expenses = expenseService.allExpenses();
+        model.addAttribute("expenses", expenses);
+
         if(result.hasErrors()) {
             return "index.jsp";
         }
